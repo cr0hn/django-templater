@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-templater"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["cr0hn <cr0hn@cr0hn.com>"]
 readme = "README.md"

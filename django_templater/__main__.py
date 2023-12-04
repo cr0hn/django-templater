@@ -148,8 +148,9 @@ def fetch_html(url: str) -> str:
     :param url: URL or path of the HTML page
     :return: HTML content
     """
-    if url.startswith('http://') or url.startswith('https://'):
+    if url.startswith('http://') or url.startswith('https://') or url.startswith('//'):
         return requests.get(url).text
+
     else:
         with open(url, 'r') as file:
             return file.read()
@@ -285,7 +286,14 @@ def main():
 
     pages = []
     for p in args.other_pages:
-        pages.append(*glob.glob(p))
+        pages.extend([
+            x
+
+            for x in
+            glob.glob(p)
+
+            if os.path.isfile(x) and (x.endswith('.html') or x.endswith('.htm'))
+        ])
 
     # Create output templates directory if it doesn't exist
     if not os.path.exists(output_dir):
