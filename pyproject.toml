@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "django-templater"
+version = "0.1.0"
+description = ""
+authors = ["cr0hn <cr0hn@cr0hn.com>"]
+readme = "README.md"
+packages = [{include = "django_templater"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+lxml = "^4.9.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+dt = "django_templater.__main__:main"
