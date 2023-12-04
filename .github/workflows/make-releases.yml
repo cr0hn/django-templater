@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   publish-on-pypi:
-    name: Publish to 42Crunch PyPI
+    name: Publish to PyPI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
