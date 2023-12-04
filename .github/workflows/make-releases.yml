@@ -1,0 +1,31 @@
+name: Create releases to PyPI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - pyproject.toml
+      - poetry.lock
+
+concurrency:
+  group: 'releases-publisher-cli'
+  cancel-in-progress: true
+
+
+jobs:
+  publish-on-pypi:
+    name: Publish to 42Crunch PyPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.17
+        with:
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
